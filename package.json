@@ -6,7 +6,7 @@
   "author": "Matthew Mueller <mattmuelle@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git://github.com/MatthewMueller/.netrc.git"
+    "url": "git://github.com/MatthewMueller/node-netrc"
   },
   "dependencies": {
     "netrc": "^0.1.3"
