@@ -1,6 +1,9 @@
 
 # node-netrc
 
+[![npm version](https://img.shields.io/npm/v/node-netrc.svg)](https://npmjs.org/package/node-netrc)
+[![build status](https://img.shields.io/travis/duojs/node-netrc.svg)](https://travis-ci.org/duojs/node-netrc)
+
 > Higher-level `~/.netrc` parser
 
 
