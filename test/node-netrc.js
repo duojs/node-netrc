@@ -111,6 +111,22 @@ describe('netrc([host])', function() {
         }
       });
     });
+
+    it('should delete the given host', function () {
+      // copy fixture file to tmp dir
+      fs.writeFileSync(tmp, fs.readFileSync(fixture('complex')), 'utf8');
+
+      // write to the tmp file
+      netrc.file = tmp;
+      netrc.update('raw.github.com');
+
+      assert.deepEqual(netrc(), {
+        'api.github.com': {
+          login: 'user1',
+          password: 'pass1'
+        }
+      });
+    });
   });
 
   describe('.file', function () {
