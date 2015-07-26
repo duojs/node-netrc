@@ -1,31 +1,53 @@
 
 # node-netrc
 
-  Higher-level `~/.netrc` parser
+> Higher-level `~/.netrc` parser
+
 
 ## Example
 
 ```js
 var netrc = require('node-netrc');
+
+// read auth from ~/.netrc
 var auth = netrc('api.github.com');
 auth.login // ...
 auth.password // ...
+
+// merge new config into ~/.netrc
+netrc.update('api.github.com', {
+  login: 'user',
+  password: 'pass'
+});
 ```
+
 
 ## API
 
-### `netrc([host])`
+### netrc([host])
 
 Return the `login` and `password` details of `host`. Or return `false`.
 
 If no `host`, return all the hosts.
 
+### netrc.update(host, data)
+
+Updates the netrc with the given `data` for `host`. (`data` usually contains
+`login` and `password`, but any given props will be written)
+
+If `data` is empty, the given `host` will be removed from the file.
+
+**NOTE:** this method merges data with what is already in place, it will **not**
+affect any other hosts.
+
+
 ## Testing
 
-    npm install
-    make test
+```sh
+npm install
+make test
+```
 
-> Note: you'll need `raw.github.com` & `api.github.com` set in your `~/.netrc` for the tests to function properly.
 
 ## License
 

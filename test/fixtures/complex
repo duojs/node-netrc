@@ -1,0 +1,8 @@
+
+machine api.github.com
+  login user1
+  password pass1
+
+machine raw.github.com
+  login user2
+  password pass2
