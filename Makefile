@@ -1,7 +1,11 @@
 
+BIN := ./node_modules/.bin
+MOCHA := $(BIN)/mocha
+
+node_modules: package.json
+	@npm install
+
 test:
-	@./node_modules/.bin/mocha \
-		--require should \
-		--reporter spec
+	@$(MOCHA)
 
 .PHONY: test
