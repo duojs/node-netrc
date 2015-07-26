@@ -1,0 +1,6 @@
+{
+  "extends": "duo",
+  "rules": {
+    "no-sync": 0
+  }
+}

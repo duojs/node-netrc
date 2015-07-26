@@ -16,15 +16,15 @@ var tmp = path.resolve(os.tmpdir(), '.netrc');
  * Tests
  */
 
-describe('netrc([host])', function() {
+describe('netrc([host])', function () {
   var defaultFile = netrc.file;
 
-  afterEach(function() {
+  afterEach(function () {
     netrc.file = defaultFile;
     if (fs.existsSync(tmp)) fs.unlinkSync(tmp);
   });
 
-  it('should return a host', function() {
+  it('should return a host', function () {
     netrc.file = fixture('simple');
 
     var obj = netrc('api.github.com');
@@ -33,7 +33,7 @@ describe('netrc([host])', function() {
     assert(obj.login);
   });
 
-  it('should return false if no host found', function() {
+  it('should return false if no host found', function () {
     netrc.file = fixture('simple');
 
     var obj = netrc('blah.com');
@@ -41,7 +41,7 @@ describe('netrc([host])', function() {
     assert.strictEqual(obj, false);
   });
 
-  it('should return all hosts if no host given', function() {
+  it('should return all hosts if no host given', function () {
     netrc.file = fixture('complex');
 
     var obj = netrc();
@@ -58,7 +58,7 @@ describe('netrc([host])', function() {
     });
   });
 
-  it('should return an empty object', function() {
+  it('should return an empty object', function () {
     netrc.file = fixture('empty');
 
     var obj = netrc();
@@ -66,10 +66,9 @@ describe('netrc([host])', function() {
     assert.deepEqual(obj, {});
   });
 
-  describe('.update(host, data)', function() {
+  describe('.update(host, data)', function () {
     it('should write to the given file', function () {
       netrc.file = tmp;
-      var obj = netrc();
       netrc.update('api.github.com', { password: 'abc123' });
       assert.strictEqual(netrc('api.github.com').password, 'abc123');
     });
@@ -132,7 +131,7 @@ describe('netrc([host])', function() {
   describe('.file', function () {
     var home = process.env.HOME || process.env.HOMEPATH;
 
-    it('should be in the home directory', function() {
+    it('should be in the home directory', function () {
       assert.equal(netrc.file, path.join(home, '.netrc'));
     });
   });
